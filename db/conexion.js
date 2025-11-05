@@ -11,4 +11,9 @@ const sequelize = new Sequelize(
   }
 );
 
+sequelize.authenticate()
+  .then(() => console.log('✅ Conexión exitosa broski a la base de datos'))
+  .catch(err => console.error('❌ Error al conectar a la base de datos menso:', err));
+
+
 module.exports = sequelize;
