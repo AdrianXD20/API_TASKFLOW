@@ -101,6 +101,34 @@ class TareasController {
       res.status(500).json({ message: 'Error al buscar tareas', error: error.message });
     }
   }
+
+
+  async actualizarEstadoTarea(req, res) {
+  try {
+    const { id } = req.params;
+    const { estado } = req.body;
+
+    if (!['Pendiente', 'Completado', 'En proceso'].includes(estado)) {
+      return res.status(400).json({ 
+        message: 'Estado inválido. Debe ser: Pendiente, Completado o En proceso' 
+      });
+    }
+
+    const tareaActualizada = await this.tareasService.actualizarTarea(id, { estado });
+    
+    if (tareaActualizada) {
+      res.json(tareaActualizada);
+    } else {
+      res.status(404).json({ message: 'Tarea no encontrada' });
+    }
+  } catch (error) {
+    console.error('Error en actualizarEstadoTarea:', error);
+    res.status(500).json({ 
+      message: 'Error al actualizar el estado de la tarea', 
+      error: error.message 
+    });
+  }
+}
 }
 
 module.exports = TareasController;

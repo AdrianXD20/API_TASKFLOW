@@ -170,6 +170,36 @@ router.put('/:id', (req, res) => tareasController.actualizarTarea(req, res));
    *         description: Tarea no encontrada
    */
 router.delete('/:id', (req, res) => tareasController.eliminarTarea(req, res));
+/**
+ * @swagger
+ * /tareas/{id}/estado:
+ *   patch:
+ *     summary: Actualizar solo el estado de una tarea
+ *     tags: [Tareas]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               estado:
+ *                 type: string
+ *                 enum: ['Pendiente', 'Completado', 'En proceso']
+ *                 example: "Completado"
+ *     responses:
+ *       200:
+ *         description: Estado de tarea actualizado
+ *       404:
+ *         description: Tarea no encontrada
+ */
+router.patch('/:id/estado', (req, res) => tareasController.actualizarEstadoTarea(req, res));
 
 
 router.get('/buscar/:nombre', (req, res) => tareasController.obtenerTareasPorNombre(req, res));
