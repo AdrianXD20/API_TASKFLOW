@@ -27,22 +27,6 @@ const Tarea = sequelize.define('Tarea', {
   estado: {
     type: DataTypes.ENUM('Entregado', 'No Entregado'),
     allowNull: true
-  },
-  estrategia_id: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    references: {
-      model: 'estrategias', // nombre de la tabla relacionada
-      key: 'id'
-    }
-  },
-  usuario_id: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    references: {
-      model: 'usuarios', // nombre de la tabla relacionada
-      key: 'id'
-    }
   }
 }, {
   tableName: 'tareas',

@@ -44,9 +44,6 @@ const tareasController = new TareasController(tareasService);
  *         estrategia:
  *           type: string
  *           example: "Dividir el trabajo en secciones y asignar fechas límite para cada una"
- *         usuario_id:
- *           type: integer
- *           example: 7
  */
 
 /**
@@ -76,35 +73,6 @@ const tareasController = new TareasController(tareasService);
  *               items:
  *                 $ref: '#/components/schemas/Tarea'
  */
-  router.get('/', tareasController.obtenerTareas.bind(tareasController));
-
-  /**
-   * @swagger
-   * /tareas/{id}:
-   *   get:
-   *     summary: Obtener tarea por id
-   *     tags: [Tareas]
-   *     parameters:
-   *       - in: path
-   *         name: id
-   *         required: true
-   *         schema:
-   *           type: integer
-   *     responses:
-   *       200:
-   *         description: Tarea encontrada
-   *         content:
-   *           application/json:
-   *             schema:
-   *               $ref: '#/components/schemas/Tarea'
-   *       404:
-   *         description: Tarea no encontrada
-   */
-
-
-
-
-
 router.get('/', (req, res) => tareasController.obtenerTareas(req, res));
 /**
    * @swagger
@@ -202,6 +170,8 @@ router.put('/:id', (req, res) => tareasController.actualizarTarea(req, res));
    *         description: Tarea no encontrada
    */
 router.delete('/:id', (req, res) => tareasController.eliminarTarea(req, res));
+
+
 router.get('/buscar/:nombre', (req, res) => tareasController.obtenerTareasPorNombre(req, res));
 
 module.exports = router;
