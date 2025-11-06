@@ -35,15 +35,15 @@ const tareasController = new TareasController(tareasService);
  *           example: "2025-11-15"
  *         prioridad:
  *           type: string
- *           enum: [Importante, Poco Importante]
- *           example: "Importante"
+ *           enum: ['Alta', 'Media', 'Baja']
+ *           example: "Alta"
  *         estado:
  *           type: string
- *           enum: [Entregado, No Entregado]
- *           example: "No Entregado"
- *         estrategia_id:
- *           type: integer
- *           example: 3
+ *           enum: ['Pendiente', 'Completado', 'En proceso']
+ *           example: "En proceso"
+ *         estrategia:
+ *           type: string
+ *           example: "Dividir el trabajo en secciones y asignar fechas límite para cada una"
  *         usuario_id:
  *           type: integer
  *           example: 7
